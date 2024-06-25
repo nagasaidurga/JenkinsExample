@@ -15,11 +15,18 @@
      steps:
        - name: Get Your Code
          uses: actions/checkout@v2
+       - name: Run Lint
+         uses: ./gradlew Lint
+       - name: Upload HTML report
+         uses: actions/upload-artifact@v2
+         with:
+             name: index.html
+             path: app/build/reports/lint-results.html
 
        - name: Say Hello to the World
          run: echo "Hello, World!"
 
-       - name: Multi linescript
+       - name: Multi line script
          run: echo "hello sai"
               echo "second hello"
               
